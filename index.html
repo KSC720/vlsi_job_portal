@@ -17,20 +17,17 @@
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 min-h-screen">
     
-    <!-- Success Message (Hidden by default) -->
     <div id="successMessage" class="hidden min-h-screen flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center fade-in">
             <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             <h2 class="text-2xl font-bold text-gray-800 mb-2">Application Submitted!</h2>
-            <p class="text-gray-600">Thank you for applying. We'll review your application and get back to you soon.</p>
+            <p class="text-gray-600">Thank you for applying. We'll review your profile and reach out if there is a suitable opportunity.</p>
         </div>
     </div>
 
-    <!-- Main Form (Visible by default) -->
     <div id="mainForm">
-        <!-- Header -->
         <div class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-8 px-4 shadow-xl">
             <div class="max-w-4xl mx-auto">
                 <div class="flex items-center justify-center mb-3">
@@ -39,11 +36,10 @@
                     </svg>
                     <h1 class="text-4xl font-bold">VLSI Career Portal</h1>
                 </div>
-                <p class="text-center text-blue-100 text-lg">Join the Future of Chip Design</p>
+                <p class="text-center text-blue-100 text-lg">Share your profile for relevant VLSI opportunities</p>
             </div>
         </div>
 
-        <!-- Hero Section -->
         <div class="max-w-4xl mx-auto px-4 py-8">
             <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl p-6 mb-8 text-white shadow-lg">
                 <div class="flex items-start">
@@ -52,17 +48,20 @@
                     </svg>
                     <div>
                         <h2 class="text-2xl font-bold mb-2">Accelerate Your VLSI Career</h2>
-                        <p class="text-blue-50">We're looking for talented engineers in Verification, DFT, Physical Design, and more. Submit your application below and become part of our innovative team.</p>
+                        <p class="text-blue-50">
+                            Roles across Verification, DFT, Physical Design, RTL, Analog/Mixed Signal, ASIC and FPGA.
+                            Submit your details once – we'll reach out whenever a suitable position opens up.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Application Form -->
             <div class="bg-white rounded-2xl shadow-2xl p-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2 inline-block">Application Form</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2 inline-block">
+                    Application Form
+                </h2>
                 
                 <div class="space-y-6">
-                    <!-- Full Name -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
                             Full Name <span class="text-red-500">*</span>
@@ -71,7 +70,6 @@
                         <p id="fullNameError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
-                    <!-- Email -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
                             Email Address <span class="text-red-500">*</span>
@@ -80,7 +78,6 @@
                         <p id="emailError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
-                    <!-- Phone -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
                             Phone Number <span class="text-red-500">*</span>
@@ -89,7 +86,11 @@
                         <p id="phoneError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
-                    <!-- Specialization -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Current Location</label>
+                        <input type="text" id="currentLocation" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="City, State">
+                    </div>
+
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Specialization</label>
                         <select id="specialization" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
@@ -105,46 +106,48 @@
                         </select>
                     </div>
 
-                    <!-- Experience -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Years of Experience</label>
                         <input type="text" id="experience" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 3 years or Fresher">
                     </div>
 
-                    <!-- Notice Period -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Current CTC</label>
+                            <input type="text" id="currentCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 8 LPA">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Expected CTC</label>
+                            <input type="text" id="expectedCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 12 LPA">
+                        </div>
+                    </div>
+
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Notice Period</label>
                         <input type="text" id="noticePeriod" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., Immediate, 30 days, 60 days">
                     </div>
 
-                    <!-- Current Location -->
-                    <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Current Location</label>
-                        <input type="text" id="currentLocation" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="City, State">
-                    </div>
-
-                    <!-- Protocols -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Protocols & Interfaces</label>
                         <div id="protocolButtons" class="mb-3 flex flex-wrap gap-2">
-                            <button type="button" onclick="toggleProtocol('PCIe')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">PCIe</button>
-                            <button type="button" onclick="toggleProtocol('USB')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">USB</button>
-                            <button type="button" onclick="toggleProtocol('AXI')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">AXI</button>
-                            <button type="button" onclick="toggleProtocol('AHB')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">AHB</button>
-                            <button type="button" onclick="toggleProtocol('APB')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">APB</button>
-                            <button type="button" onclick="toggleProtocol('I2C')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">I2C</button>
-                            <button type="button" onclick="toggleProtocol('SPI')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">SPI</button>
-                            <button type="button" onclick="toggleProtocol('UART')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">UART</button>
-                            <button type="button" onclick="toggleProtocol('CAN')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">CAN</button>
-                            <button type="button" onclick="toggleProtocol('Ethernet')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">Ethernet</button>
-                            <button type="button" onclick="toggleProtocol('DDR')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">DDR</button>
-                            <button type="button" onclick="toggleProtocol('MIPI')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">MIPI</button>
-                            <button type="button" onclick="toggleProtocol('AMBA')" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">AMBA</button>
+                            <button type="button" data-protocol="PCIe" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">PCIe</button>
+                            <button type="button" data-protocol="USB" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">USB</button>
+                            <button type="button" data-protocol="AXI" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">AXI</button>
+                            <button type="button" data-protocol="AHB" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">AHB</button>
+                            <button type="button" data-protocol="APB" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">APB</button>
+                            <button type="button" data-protocol="I2C" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">I2C</button>
+                            <button type="button" data-protocol="SPI" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">SPI</button>
+                            <button type="button" data-protocol="UART" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">UART</button>
+                            <button type="button" data-protocol="CAN" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">CAN</button>
+                            <button type="button" data-protocol="Ethernet" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">Ethernet</button>
+                            <button type="button" data-protocol="DDR" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">DDR</button>
+                            <button type="button" data-protocol="MIPI" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">MIPI</button>
+                            <button type="button" data-protocol="AMBA" class="protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">AMBA</button>
                         </div>
                         
                         <div class="flex gap-2 mb-3">
                             <input type="text" id="customProtocol" class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="Add custom protocol">
-                            <button type="button" onclick="addCustomProtocol()" class="px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition">Add</button>
+                            <button type="button" id="addProtocolBtn" class="px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition">Add</button>
                         </div>
 
                         <div id="selectedProtocols" class="bg-blue-50 rounded-lg p-3 hidden">
@@ -153,18 +156,16 @@
                         </div>
                     </div>
 
-                    <!-- Resume Upload -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">
                             Upload Resume <span class="text-gray-500 text-sm">(Optional)</span>
                         </label>
-                        <input type="file" id="resume" accept=".pdf,.doc,.docx" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                         <p id="resumeError" class="text-red-500 text-sm mt-1 hidden"></p>
                         <p id="resumeSuccess" class="text-green-600 text-sm mt-1 hidden"></p>
                         <p class="text-gray-500 text-sm mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
                     </div>
 
-                    <!-- Project Details -->
                     <div>
                         <label class="block text-gray-700 font-semibold mb-2">Project Details & Roles/Responsibilities</label>
                         <textarea id="projectDetails" rows="8" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition resize-y" placeholder="Please describe:
@@ -179,18 +180,16 @@ Project: USB 3.0 Controller Verification
 Role: Verification Engineer
 Responsibilities: Developed UVM testbench, created test plans, achieved 95% code coverage..."></textarea>
                         <p id="projectDetailsError" class="text-red-500 text-sm mt-1 hidden"></p>
-                        <p class="text-gray-500 text-sm mt-1">If you don't have a resume, please provide detailed project information here</p>
+                        <p class="text-gray-500 text-sm mt-1">If you don't upload a resume, please add good project details here.</p>
                     </div>
 
-                    <!-- Submit Button -->
-                    <button type="button" id="submitBtn" onclick="submitForm()" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-4 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-cyan-600 transition shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                    <button type="button" id="submitBtn" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-4 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-cyan-600 transition shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                         Submit Application
                     </button>
                     <div id="submitError" class="bg-red-50 border-2 border-red-200 rounded-lg p-4 text-red-700 hidden"></div>
                 </div>
             </div>
 
-            <!-- Footer -->
             <div class="text-center mt-8 text-gray-300">
                 <p class="text-sm">© 2025 VLSI Career Portal. All rights reserved.</p>
             </div>
@@ -198,10 +197,26 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
     </div>
 
     <script>
-        let selectedProtocols = [];
-        let resumeFile = null;
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxjxEhPGHGlsDxL-m3JeMTjERBCgStjt74ed-imkMhVYT4-lQKG_QT78Ixkfjpvmb8/exec';
 
-        // Protocol management
+        let selectedProtocols = [];
+
+        document.getElementById('protocolButtons').addEventListener('click', function(e) {
+            if (e.target.classList.contains('protocol-btn')) {
+                const protocol = e.target.getAttribute('data-protocol');
+                toggleProtocol(protocol);
+            }
+        });
+
+        document.getElementById('addProtocolBtn').addEventListener('click', addCustomProtocol);
+
+        document.getElementById('customProtocol').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addCustomProtocol();
+            }
+        });
+
         function toggleProtocol(protocol) {
             const index = selectedProtocols.indexOf(protocol);
             if (index > -1) {
@@ -220,6 +235,7 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 selectedProtocols.push(protocol);
                 input.value = '';
                 updateSelectedProtocols();
+                updateProtocolButtons();
             }
         }
 
@@ -235,7 +251,7 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
         function updateProtocolButtons() {
             const buttons = document.querySelectorAll('.protocol-btn');
             buttons.forEach(btn => {
-                const protocol = btn.textContent;
+                const protocol = btn.getAttribute('data-protocol');
                 if (selectedProtocols.includes(protocol)) {
                     btn.className = 'protocol-btn px-3 py-1 rounded-full text-sm font-medium transition bg-blue-500 text-white';
                 } else {
@@ -253,15 +269,15 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 list.innerHTML = selectedProtocols.map(p => 
                     `<span class="inline-flex items-center bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
                         ${p}
-                        <button type="button" onclick="removeProtocol('${p}')" class="ml-2 hover:text-red-200">×</button>
+                        <button type="button" onclick="removeProtocol('${p}')" class="ml-2 hover:text-red-200 focus:outline-none">×</button>
                     </span>`
                 ).join('');
             } else {
                 container.classList.add('hidden');
+                list.innerHTML = '';
             }
         }
 
-        // File handling
         document.getElementById('resume').addEventListener('change', function(e) {
             const file = e.target.files[0];
             const errorEl = document.getElementById('resumeError');
@@ -274,26 +290,23 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 if (file.size > 5 * 1024 * 1024) {
                     errorEl.textContent = 'File size should be less than 5MB';
                     errorEl.classList.remove('hidden');
-                    resumeFile = null;
+                    e.target.value = '';
                     return;
                 }
                 if (!file.name.match(/\.(pdf|doc|docx)$/i)) {
                     errorEl.textContent = 'Only PDF, DOC, or DOCX files are allowed';
                     errorEl.classList.remove('hidden');
-                    resumeFile = null;
+                    e.target.value = '';
                     return;
                 }
-                resumeFile = file;
                 successEl.textContent = '✓ Selected: ' + file.name;
                 successEl.classList.remove('hidden');
             }
         });
 
-        // Form validation
         function validateForm() {
             let isValid = true;
             
-            // Clear all errors
             document.querySelectorAll('[id$="Error"]').forEach(el => {
                 el.classList.add('hidden');
             });
@@ -302,6 +315,8 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const projectDetails = document.getElementById('projectDetails').value.trim();
+            const resumeInput = document.getElementById('resume');
+            const hasResume = resumeInput.files && resumeInput.files.length > 0;
 
             if (!fullName) {
                 document.getElementById('fullNameError').textContent = 'Full name is required';
@@ -329,10 +344,11 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 isValid = false;
             }
 
-            if (!resumeFile && !projectDetails) {
-                document.getElementById('resumeError').textContent = 'Please either upload a resume or provide project details';
+            if (!hasResume && !projectDetails) {
+                const msg = 'Please either upload a resume or provide project details';
+                document.getElementById('resumeError').textContent = msg;
                 document.getElementById('resumeError').classList.remove('hidden');
-                document.getElementById('projectDetailsError').textContent = 'Please either upload a resume or provide project details';
+                document.getElementById('projectDetailsError').textContent = msg;
                 document.getElementById('projectDetailsError').classList.remove('hidden');
                 isValid = false;
             }
@@ -340,8 +356,22 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
             return isValid;
         }
 
-        // Form submission
-        async function submitForm() {
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const base64String = reader.result.split(',')[1];
+                    resolve(base64String);
+                };
+                reader.onerror = (error) => {
+                    console.error('FileReader error:', error);
+                    reject(error);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', async function() {
             if (!validateForm()) {
                 return;
             }
@@ -352,50 +382,75 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting your application...';
             errorDiv.classList.add('hidden');
+            errorDiv.textContent = '';
 
             try {
-                const formData = new FormData();
-                formData.append('fullName', document.getElementById('fullName').value);
-                formData.append('email', document.getElementById('email').value);
-                formData.append('phone', document.getElementById('phone').value);
-                formData.append('specialization', document.getElementById('specialization').value || 'Not specified');
-                formData.append('experience', document.getElementById('experience').value || 'Not specified');
-                formData.append('noticePeriod', document.getElementById('noticePeriod').value || 'Not specified');
-                formData.append('currentLocation', document.getElementById('currentLocation').value || 'Not specified');
-                formData.append('protocols', selectedProtocols.join(', ') || 'None selected');
-                formData.append('projectDetails', document.getElementById('projectDetails').value || 'Not provided');
-                formData.append('resumeFile', resumeFile ? resumeFile.name : 'Not uploaded');
+                const resumeInput = document.getElementById('resume');
+                const file = resumeInput.files[0];
+                
+                let resumeData = '';
+                let resumeFileName = '';
+                let resumeMimeType = '';
 
-                await fetch('https://script.google.com/macros/s/AKfycbwydbX7BgP8AgBUjPAknUqmgVd6QNlpFHKRT8fcDZRDeIy10s5f2d-R8quHXJapfawX/exec', {
+                if (file) {
+                    console.log('Processing file:', file.name, 'Size:', file.size, 'Type:', file.type);
+                    resumeData = await fileToBase64(file);
+                    resumeFileName = file.name;
+                    resumeMimeType = file.type || 'application/pdf';
+                    console.log('File converted to base64, length:', resumeData.length);
+                }
+
+                const payload = {
+                    fullName: document.getElementById('fullName').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    specialization: document.getElementById('specialization').value || 'Not specified',
+                    experience: document.getElementById('experience').value.trim() || 'Not specified',
+                    currentCtc: document.getElementById('currentCtc').value.trim() || 'Not specified',
+                    expectedCtc: document.getElementById('expectedCtc').value.trim() || 'Not specified',
+                    noticePeriod: document.getElementById('noticePeriod').value.trim() || 'Not specified',
+                    currentLocation: document.getElementById('currentLocation').value.trim() || 'Not specified',
+                    protocols: selectedProtocols.length > 0 ? selectedProtocols.join(', ') : 'None',
+                    projectDetails: document.getElementById('projectDetails').value.trim() || 'Not provided',
+                    resumeData: resumeData,
+                    resumeFileName: resumeFileName,
+                    resumeMimeType: resumeMimeType
+                };
+
+                console.log('Sending payload:', { ...payload, resumeData: resumeData ? `[${resumeData.length} chars]` : 'none' });
+
+                await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                    body: JSON.stringify(payload)
                 });
 
-                // Show success message
                 document.getElementById('mainForm').classList.add('hidden');
                 document.getElementById('successMessage').classList.remove('hidden');
 
-                // Reset form after 4 seconds
                 setTimeout(() => {
                     document.getElementById('successMessage').classList.add('hidden');
                     document.getElementById('mainForm').classList.remove('hidden');
                     
-                    // Clear form
                     document.getElementById('fullName').value = '';
                     document.getElementById('email').value = '';
                     document.getElementById('phone').value = '';
                     document.getElementById('specialization').value = '';
                     document.getElementById('experience').value = '';
+                    document.getElementById('currentCtc').value = '';
+                    document.getElementById('expectedCtc').value = '';
                     document.getElementById('noticePeriod').value = '';
                     document.getElementById('currentLocation').value = '';
                     document.getElementById('projectDetails').value = '';
                     document.getElementById('resume').value = '';
+                    document.getElementById('resumeSuccess').classList.add('hidden');
+                    
                     selectedProtocols = [];
-                    resumeFile = null;
                     updateProtocolButtons();
                     updateSelectedProtocols();
-                    document.getElementById('resumeSuccess').classList.add('hidden');
                     
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Submit Application';
@@ -403,20 +458,15 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
 
             } catch (error) {
                 console.error('Submission error:', error);
-                errorDiv.textContent = 'There was an error. Please check your internet connection and try again.';
+                errorDiv.textContent = 'There was an error submitting your application. Please try again.';
                 errorDiv.classList.remove('hidden');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Application';
             }
-        }
-
-        // Allow Enter key on custom protocol input
-        document.getElementById('customProtocol').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                addCustomProtocol();
-            }
         });
+
+        updateProtocolButtons();
+        updateSelectedProtocols();
     </script>
 </body>
 </html>
