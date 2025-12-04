@@ -17,17 +17,25 @@
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 min-h-screen">
     
+    <!-- Success Message -->
     <div id="successMessage" class="hidden min-h-screen flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center fade-in">
             <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <h2 class="text-2xl font-bold text-gray-800 mb-2">Application Submitted!</h2>
-            <p class="text-gray-600">Thank you for applying. We'll review your profile and reach out if there is a suitable opportunity.</p>
+            <!-- Dynamic title + body -->
+            <h2 id="successTitle" class="text-2xl font-bold text-gray-800 mb-2">
+                Application Submitted!
+            </h2>
+            <p id="successBody" class="text-gray-600">
+                Thank you for applying. We'll review your profile and reach out if there is a suitable opportunity.
+            </p>
         </div>
     </div>
 
+    <!-- Main Form -->
     <div id="mainForm">
+        <!-- Top banner -->
         <div class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-8 px-4 shadow-xl">
             <div class="max-w-4xl mx-auto">
                 <div class="flex items-center justify-center mb-3">
@@ -36,26 +44,41 @@
                     </svg>
                     <h1 class="text-4xl font-bold">VLSI Career Portal</h1>
                 </div>
-                <p class="text-center text-blue-100 text-lg">Share your profile for relevant VLSI opportunities</p>
+                <p class="text-center text-blue-100 text-lg">
+                    Share your profile once – we’ll connect you to the right VLSI opportunity.
+                </p>
             </div>
         </div>
 
         <div class="max-w-4xl mx-auto px-4 py-8">
+            <!-- Inspiring VLSI card -->
             <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl p-6 mb-8 text-white shadow-lg">
-                <div class="flex items-start">
-                    <svg class="w-8 h-8 mr-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex flex-col md:flex-row items-start gap-4">
+                    <svg class="w-10 h-10 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                     <div>
                         <h2 class="text-2xl font-bold mb-2">Accelerate Your VLSI Career</h2>
-                        <p class="text-blue-50">
-                            Roles across Verification, DFT, Physical Design, RTL, Analog/Mixed Signal, ASIC and FPGA.
-                            Submit your details once – we'll reach out whenever a suitable position opens up.
+                        <p class="text-blue-50 mb-3">
+                            The semiconductor and VLSI industry is growing faster than ever. From complex SoCs to cutting-edge
+                            AI accelerators, companies are constantly looking for strong engineers who understand design, verification,
+                            physical implementation and silicon bring-up.
                         </p>
+                        <p class="text-blue-50 mb-3">
+                            Whether you are a fresher with solid fundamentals, or an experienced engineer in:
+                            <span class="font-semibold">Verification, DFT, Physical Design, RTL, AMS, ASIC or FPGA</span> – we want
+                            to know you. This single form helps us match you to the right opportunity when it appears.
+                        </p>
+                        <ul class="list-disc text-blue-50 pl-5 space-y-1 text-sm md:text-base">
+                            <li>We work with multiple VLSI design and product companies.</li>
+                            <li>Your details are reviewed by people who understand VLSI – not generic HR filters.</li>
+                            <li>We reach out only when there is a relevant and serious opportunity for you.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
+            <!-- Application form card -->
             <div class="bg-white rounded-2xl shadow-2xl p-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2 inline-block">
                     Application Form
@@ -87,12 +110,17 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Current Location</label>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Current Location <span class="text-red-500">*</span>
+                        </label>
                         <input type="text" id="currentLocation" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="City, State">
+                        <p id="currentLocationError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Specialization</label>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Specialization <span class="text-red-500">*</span>
+                        </label>
                         <select id="specialization" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition">
                             <option value="">Select your specialization</option>
                             <option value="Verification">Verification</option>
@@ -104,27 +132,40 @@
                             <option value="ASIC Design">ASIC Design</option>
                             <option value="FPGA Design">FPGA Design</option>
                         </select>
+                        <p id="specializationError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Years of Experience</label>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Years of Experience <span class="text-red-500">*</span>
+                        </label>
                         <input type="text" id="experience" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 3 years or Fresher">
+                        <p id="experienceError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Current CTC</label>
-                            <input type="text" id="currentCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 8 LPA">
+                            <label class="block text-gray-700 font-semibold mb-2">
+                                Current CTC <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="currentCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 8 or 8 LPA">
+                            <p id="currentCtcError" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">Expected CTC</label>
-                            <input type="text" id="expectedCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 12 LPA">
+                            <label class="block text-gray-700 font-semibold mb-2">
+                                Expected CTC <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="expectedCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., 12 or 12 LPA">
+                            <p id="expectedCtcError" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Notice Period</label>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Notice Period <span class="text-red-500">*</span>
+                        </label>
                         <input type="text" id="noticePeriod" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="e.g., Immediate, 30 days, 60 days">
+                        <p id="noticePeriodError" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
 
                     <div>
@@ -167,7 +208,9 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Project Details & Roles/Responsibilities</label>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Project Details & Roles/Responsibilities <span class="text-gray-500 text-sm">(Optional but recommended)</span>
+                        </label>
                         <textarea id="projectDetails" rows="8" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition resize-y" placeholder="Please describe:
 • Projects you've worked on
 • Your role in each project
@@ -180,7 +223,9 @@ Project: USB 3.0 Controller Verification
 Role: Verification Engineer
 Responsibilities: Developed UVM testbench, created test plans, achieved 95% code coverage..."></textarea>
                         <p id="projectDetailsError" class="text-red-500 text-sm mt-1 hidden"></p>
-                        <p class="text-gray-500 text-sm mt-1">If you don't upload a resume, please add good project details here.</p>
+                        <p class="text-gray-500 text-sm mt-1">
+                            Even if you upload a resume, a few lines here help us understand your profile faster.
+                        </p>
                     </div>
 
                     <button type="button" id="submitBtn" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-4 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-cyan-600 transition shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
@@ -191,7 +236,9 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
             </div>
 
             <div class="text-center mt-8 text-gray-300">
-                <p class="text-sm">© 2025 VLSI Career Portal. All rights reserved.</p>
+                <p class="text-sm">
+                    © 2025 VLSI Career Portal. We respect your privacy – your details are used only for relevant VLSI opportunities.
+                </p>
             </div>
         </div>
     </div>
@@ -311,12 +358,18 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 el.classList.add('hidden');
             });
 
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const projectDetails = document.getElementById('projectDetails').value.trim();
-            const resumeInput = document.getElementById('resume');
-            const hasResume = resumeInput.files && resumeInput.files.length > 0;
+            const fullName        = document.getElementById('fullName').value.trim();
+            const email           = document.getElementById('email').value.trim();
+            const phone           = document.getElementById('phone').value.trim();
+            const currentLocation = document.getElementById('currentLocation').value.trim();
+            const specialization  = document.getElementById('specialization').value.trim();
+            const experience      = document.getElementById('experience').value.trim();
+            const currentCtc      = document.getElementById('currentCtc').value.trim();
+            const expectedCtc     = document.getElementById('expectedCtc').value.trim();
+            const noticePeriod    = document.getElementById('noticePeriod').value.trim();
+            const projectDetails  = document.getElementById('projectDetails').value.trim();
+            const resumeInput     = document.getElementById('resume');
+            const hasResume       = resumeInput.files && resumeInput.files.length > 0;
 
             if (!fullName) {
                 document.getElementById('fullNameError').textContent = 'Full name is required';
@@ -344,14 +397,43 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 isValid = false;
             }
 
-            if (!hasResume && !projectDetails) {
-                const msg = 'Please either upload a resume or provide project details';
-                document.getElementById('resumeError').textContent = msg;
-                document.getElementById('resumeError').classList.remove('hidden');
-                document.getElementById('projectDetailsError').textContent = msg;
-                document.getElementById('projectDetailsError').classList.remove('hidden');
+            if (!currentLocation) {
+                document.getElementById('currentLocationError').textContent = 'Current location is required';
+                document.getElementById('currentLocationError').classList.remove('hidden');
                 isValid = false;
             }
+
+            if (!specialization) {
+                document.getElementById('specializationError').textContent = 'Please select your specialization';
+                document.getElementById('specializationError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!experience) {
+                document.getElementById('experienceError').textContent = 'Years of experience is required';
+                document.getElementById('experienceError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!currentCtc) {
+                document.getElementById('currentCtcError').textContent = 'Current CTC is required';
+                document.getElementById('currentCtcError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!expectedCtc) {
+                document.getElementById('expectedCtcError').textContent = 'Expected CTC is required';
+                document.getElementById('expectedCtcError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!noticePeriod) {
+                document.getElementById('noticePeriodError').textContent = 'Notice period is required';
+                document.getElementById('noticePeriodError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Resume & project details stay optional
 
             return isValid;
         }
@@ -428,6 +510,18 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                     body: JSON.stringify(payload)
                 });
 
+                // ✅ Personalized success message
+                const successTitle = document.getElementById('successTitle');
+                const successBody = document.getElementById('successBody');
+                if (successTitle) {
+                    successTitle.textContent = `Thank you, ${payload.fullName}!`;
+                }
+                if (successBody) {
+                    successBody.textContent =
+                        'Your VLSI profile has been submitted successfully. Our team will carefully review your experience and contact you directly if there is a strong match. ' +
+                        'We never share your details outside relevant VLSI opportunities, so you can trust that your information is in safe hands.';
+                }
+
                 document.getElementById('mainForm').classList.add('hidden');
                 document.getElementById('successMessage').classList.remove('hidden');
 
@@ -454,7 +548,7 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                     
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Submit Application';
-                }, 4000);
+                }, 15000);
 
             } catch (error) {
                 console.error('Submission error:', error);
