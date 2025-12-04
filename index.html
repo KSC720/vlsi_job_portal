@@ -13,66 +13,55 @@
         
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
         
         @keyframes pulse-ring {
             0% { transform: scale(0.95); opacity: 1; }
             100% { transform: scale(1.3); opacity: 0; }
         }
-        
-        @keyframes slide-in-left {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slide-in-right {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-        
+
         @keyframes data-flow {
             0% { transform: translateX(-100%); opacity: 0; }
             50% { opacity: 1; }
             100% { transform: translateX(100%); opacity: 0; }
         }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes text-gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes underline-slide {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         
         .fade-in {
             animation: fadeIn 0.5s ease-out;
         }
-        
+
         .float-animation {
             animation: float 3s ease-in-out infinite;
         }
-        
+
         .pulse-ring {
             animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        
-        .slide-in-left {
-            animation: slide-in-left 0.6s ease-out;
-        }
-        
-        .slide-in-right {
-            animation: slide-in-right 0.6s ease-out;
-        }
-        
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            background-size: 1000px 100%;
-            animation: shimmer 3s infinite;
-        }
-        
+
         .data-flow {
             position: relative;
             overflow: hidden;
         }
-        
+
         .data-flow::before {
             content: '';
             position: absolute;
@@ -93,88 +82,129 @@
         
         .chip-pattern {
             background-image: 
-                radial-gradient(circle at 25% 25%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 25% 25%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(34, 211, 238, 0.15) 0%, transparent 50%);
         }
         
         .glow {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.25);
         }
         
         .input-focus:focus {
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
             transform: translateY(-1px);
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card {
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-        
-        .protocol-btn {
             transition: all 0.2s ease;
         }
-        
+
+        .stat-card {
+            transition: all 0.25s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
+        }
+
+        .protocol-btn {
+            transition: all 0.18s ease;
+        }
+
         .protocol-btn:hover {
             transform: translateY(-2px);
         }
-        
+
         .moving-gradient {
-            background: linear-gradient(-45deg, #1e3a8a, #1e40af, #2563eb, #3b82f6, #06b6d4);
-            background-size: 400% 400%;
-            animation: gradient-shift 15s ease infinite;
+            background: linear-gradient(-45deg, #020617, #0f172a, #1d4ed8, #0ea5e9);
+            background-size: 250% 250%;
+            animation: gradient-shift 18s ease infinite;
         }
-        
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        .hero-chip-ring {
+            border-radius: 9999px;
+            box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
         }
-        
+
+        .hero-chip {
+            background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.9), rgba(37, 99, 235, 0.95));
+        }
+
+        .hero-trace {
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0), rgba(56, 189, 248, 0.8), rgba(56, 189, 248, 0));
+            height: 2px;
+            border-radius: 9999px;
+            opacity: 0.7;
+        }
+
+        .hero-badge {
+            backdrop-filter: blur(16px);
+        }
+
+        .highlight-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background-image: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7, #22d3ee);
+            background-size: 250% 100%;
+            animation: underline-slide 6s ease-in-out infinite;
+            border-radius: 9999px;
+            opacity: 0.9;
+        }
+
+        .moving-text-gradient {
+            background-image: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7, #22d3ee);
+            background-size: 250% 100%;
+            animation: text-gradient-move 8s ease-in-out infinite;
+        }
+
         .particle {
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(59, 130, 246, 0.5);
-            border-radius: 50%;
-            animation: particle-float 8s ease-in-out infinite;
+            background: rgba(96, 165, 250, 0.6);
+            border-radius: 9999px;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.8;
         }
-        
-        @keyframes particle-float {
-            0%, 100% { transform: translate(0, 0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translate(100px, -100px); opacity: 0; }
+
+        .particle:nth-child(1) { top: 20%; left: 8%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 35%; left: 25%; animation-delay: 1.5s; }
+        .particle:nth-child(3) { top: 18%; left: 60%; animation-delay: 3s; }
+        .particle:nth-child(4) { top: 45%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(5) { top: 28%; left: 50%; animation-delay: 4s; }
+
+        @media (max-width: 640px) {
+            .hero-grid {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
-        
-        .particle:nth-child(2) { animation-delay: 2s; left: 20%; }
-        .particle:nth-child(3) { animation-delay: 4s; left: 40%; }
-        .particle:nth-child(4) { animation-delay: 6s; left: 60%; }
-        .particle:nth-child(5) { animation-delay: 1s; left: 80%; }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 min-h-screen circuit-bg">
     
     <!-- Success Message -->
     <div id="successMessage" class="hidden min-h-screen flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-2xl p-10 max-w-lg w-full text-center fade-in border-t-4 border-blue-600">
-            <div class="relative inline-block">
-                <div class="bg-gradient-to-br from-green-400 to-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg float-animation">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-10 max-w-lg w-full text-center fade-in border-t-4 border-blue-600">
+            <div class="relative inline-block mb-4 sm:mb-6">
+                <div class="bg-gradient-to-br from-green-400 to-green-600 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto shadow-lg float-animation">
+                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
                 <div class="absolute inset-0 bg-green-400 rounded-full pulse-ring"></div>
             </div>
-            <h2 id="successTitle" class="text-3xl font-bold text-gray-900 mb-3">
+            <h2 id="successTitle" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
                 Application Submitted Successfully!
             </h2>
-            <p id="successBody" class="text-gray-600 text-lg leading-relaxed">
+            <p id="successBody" class="text-gray-600 text-base sm:text-lg leading-relaxed">
                 Thank you for applying. We'll review your profile and reach out if there is a suitable opportunity.
             </p>
         </div>
@@ -182,94 +212,175 @@
 
     <!-- Main Form -->
     <div id="mainForm">
-        <!-- Professional Header with Animation -->
+        <!-- HERO / VLSI CAREER PORTAL -->
         <div class="relative overflow-hidden">
-            <div class="absolute inset-0 chip-pattern"></div>
+            <div class="absolute inset-0 chip-pattern opacity-80 pointer-events-none"></div>
+
             <!-- Floating Particles -->
-            <div class="particle" style="left: 10%; top: 20%;"></div>
-            <div class="particle" style="left: 30%; top: 40%;"></div>
-            <div class="particle" style="left: 50%; top: 30%;"></div>
-            <div class="particle" style="left: 70%; top: 50%;"></div>
-            <div class="particle" style="left: 90%; top: 25%;"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
             
-            <div class="relative moving-gradient text-white py-12 px-4 shadow-2xl">
-                <div class="max-w-5xl mx-auto">
-                    <div class="flex items-center justify-center mb-4 slide-in-left">
-                        <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl mr-4 border border-white/20 float-animation">
-                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                            </svg>
+            <div class="relative moving-gradient text-white py-10 sm:py-14 px-4 shadow-2xl">
+                <div class="max-w-5xl mx-auto hero-grid flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
+                    
+                    <!-- Left: Text -->
+                    <div class="flex-1 text-center lg:text-left space-y-5 sm:space-y-6">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-black/20 border border-white/15 text-[11px] sm:text-xs font-medium hero-badge">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2"></span>
+                            Trusted VLSI hiring partner for product & design companies
                         </div>
+
                         <div>
-                            <h1 class="text-5xl font-bold tracking-tight">VLSI Career Portal</h1>
-                            <p class="text-blue-100 text-sm mt-1 font-medium">Silicon Valley of Opportunities</p>
+                            <p class="uppercase tracking-[0.35em] text-[11px] sm:text-xs text-blue-100 mb-1">
+                                VLSI · ASIC · FPGA · SEMICONDUCTOR
+                            </p>
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                                <span class="block">VLSI Career Portal</span>
+                                <span class="block text-blue-100 text-base sm:text-lg font-normal mt-2">
+                                    One strong profile. Multiple high-quality opportunities.
+                                </span>
+                            </h1>
+                        </div>
+
+                        <p class="text-blue-50 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            Share your silicon journey once and get discovered by hiring teams
+                            working on <span class="font-semibold text-cyan-200">SoC, IP, Verification, DFT, PD, RTL, Analog/Mixed-Signal, ASIC & FPGA</span>
+                            across India and beyond.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 justify-center lg:justify-start text-xs sm:text-sm text-blue-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <span>Profile reviewed by VLSI engineers</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center border border-white/10">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <span>No spam. Only relevant roles.</span>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-center text-blue-50 text-lg max-w-3xl mx-auto leading-relaxed slide-in-right">
-                        Connect with top semiconductor companies. One profile, unlimited opportunities in chip design, verification, and implementation.
-                    </p>
+
+                    <!-- Right: Animated VLSI chip visual -->
+                    <div class="flex-1 flex justify-center lg:justify-end">
+                        <div class="relative w-56 sm:w-64 md:w-72 aspect-square hero-chip-ring bg-white/5 backdrop-blur-xl flex items-center justify-center">
+                            <!-- Outer glow ring -->
+                            <div class="absolute inset-2 rounded-3xl border border-cyan-300/30"></div>
+
+                            <!-- Central chip -->
+                            <div class="hero-chip rounded-2xl w-32 sm:w-36 h-32 sm:h-36 shadow-2xl relative overflow-hidden float-animation">
+                                <!-- Chip pins (top/bottom) -->
+                                <div class="absolute -top-2 left-2 right-2 flex justify-between">
+                                    <div class="w-2 h-4 bg-slate-900/70 rounded-sm"></div>
+                                    <div class="w-2 h-4 bg-slate-900/70 rounded-sm"></div>
+                                    <div class="w-2 h-4 bg-slate-900/70 rounded-sm"></div>
+                                </div>
+                                <div class="absolute -bottom-2 left-2 right-2 flex justify-between">
+                                    <div class="w-2 h-4 bg-slate-900/70 rounded-sm"></div>
+                                    <div class="w-2 h-4 bg-slate-900/70 rounded-sm"></div>
+                                    <div class="w-2 h-4 bg-slate-900/70 rounded-sm"></div>
+                                </div>
+
+                                <!-- Inner content -->
+                                <div class="absolute inset-[6px] bg-slate-950/80 rounded-xl border border-cyan-200/30 flex flex-col justify-center items-center gap-1">
+                                    <span class="text-[10px] tracking-[0.3em] text-cyan-300/80 uppercase">
+                                        VLSI PROFILE
+                                    </span>
+                                    <span class="text-xs text-slate-200 flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                        <span>Ready for Matching</span>
+                                    </span>
+                                    <div class="mt-2 w-14 h-1 hero-trace"></div>
+                                </div>
+                            </div>
+
+                            <!-- Small stat cards floating around -->
+                            <div class="absolute -top-3 left-0 sm:left-2 bg-slate-900/80 text-xs px-3 py-2 rounded-xl border border-sky-500/40 shadow-lg">
+                                <div class="text-[10px] text-slate-300 uppercase tracking-wide">Active roles</div>
+                                <div class="text-sky-300 font-semibold">Verification • DFT • PD</div>
+                            </div>
+                            <div class="absolute -bottom-4 right-0 sm:right-2 bg-slate-900/80 text-xs px-3 py-2 rounded-xl border border-emerald-400/40 shadow-lg">
+                                <div class="text-[10px] text-slate-300 uppercase tracking-wide">Candidates Placed</div>
+                                <div class="text-emerald-300 font-semibold">India · US · EU</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="max-w-5xl mx-auto px-4 py-10">
-            <!-- Industry Insight Card with Animation -->
-            <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 mb-8 text-white shadow-2xl border border-slate-700 glow slide-in-left">
-                <div class="flex items-start gap-6">
-                    <div class="bg-gradient-to-br from-cyan-500 to-blue-600 p-4 rounded-xl flex-shrink-0 shadow-lg float-animation">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="max-w-5xl mx-auto px-4 py-8 sm:py-10">
+            <!-- Industry Insight Card with animated title -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 sm:p-8 mb-8 text-white shadow-2xl border border-slate-700 glow">
+                <div class="flex flex-col sm:flex-row items-start gap-5 sm:gap-6">
+                    <div class="bg-gradient-to-br from-cyan-500 to-blue-600 p-3 sm:p-4 rounded-xl flex-shrink-0 shadow-lg float-animation">
+                        <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                            Shape the Future of Semiconductor Technology
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-snug">
+                            <span class="highlight-underline">
+                                <span class="moving-text-gradient bg-clip-text text-transparent">
+                                    Shape the Future of Semiconductor Technology
+                                </span>
+                            </span>
                         </h2>
-                        <p class="text-slate-300 mb-4 leading-relaxed text-lg">
-                            The semiconductor industry is experiencing unprecedented growth. From advanced 5nm processes to AI accelerators and quantum computing interfaces, the demand for skilled VLSI professionals has never been higher.
+                        <p class="text-slate-200 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                            The semiconductor industry is in a golden era — from advanced 5nm processes and high-speed SerDes links to AI accelerators
+                            and next-generation SoCs. Companies are constantly searching for engineers who understand both design and verification at a deep level.
                         </p>
-                        <p class="text-slate-300 mb-5 leading-relaxed">
-                            Whether you're a <span class="text-cyan-400 font-semibold">fresh graduate</span> with strong fundamentals or an experienced engineer specializing in <span class="text-blue-400 font-semibold">Verification, DFT, Physical Design, RTL, Analog/Mixed-Signal, ASIC, or FPGA Design</span> – we want to hear from you.
+                        <p class="text-slate-300 mb-4 sm:mb-5 leading-relaxed text-sm sm:text-base">
+                            Whether you're a <span class="text-cyan-300 font-semibold">fresher with strong fundamentals</span> or an experienced engineer
+                            in <span class="text-blue-300 font-semibold">Verification, DFT, Physical Design, RTL, Analog/Mixed-Signal, ASIC, or FPGA</span>,
+                            this portal is designed to connect you with focused, high-quality roles — not generic job spam.
                         </p>
                         
-                        <div class="grid md:grid-cols-3 gap-4 mb-5">
-                            <div class="stat-card bg-slate-800/50 rounded-lg p-4 border border-slate-700 data-flow">
-                                <div class="text-cyan-400 text-2xl font-bold mb-1">100+</div>
-                                <div class="text-slate-400 text-sm">Partner Companies</div>
+                        <div class="grid sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-5">
+                            <div class="stat-card bg-slate-800/60 rounded-lg p-4 border border-slate-700 data-flow">
+                                <div class="text-cyan-400 text-xl sm:text-2xl font-bold mb-1">100+</div>
+                                <div class="text-slate-400 text-xs sm:text-sm">Partner Companies</div>
                             </div>
-                            <div class="stat-card bg-slate-800/50 rounded-lg p-4 border border-slate-700 data-flow" style="animation-delay: 1s;">
-                                <div class="text-blue-400 text-2xl font-bold mb-1">500+</div>
-                                <div class="text-slate-400 text-sm">Placements This Year</div>
+                            <div class="stat-card bg-slate-800/60 rounded-lg p-4 border border-slate-700 data-flow" style="animation-delay: 0.5s;">
+                                <div class="text-blue-400 text-xl sm:text-2xl font-bold mb-1">500+</div>
+                                <div class="text-slate-400 text-xs sm:text-sm">Profiles Shortlisted</div>
                             </div>
-                            <div class="stat-card bg-slate-800/50 rounded-lg p-4 border border-slate-700 data-flow" style="animation-delay: 2s;">
-                                <div class="text-purple-400 text-2xl font-bold mb-1">24hrs</div>
-                                <div class="text-slate-400 text-sm">Avg. Response Time</div>
+                            <div class="stat-card bg-slate-800/60 rounded-lg p-4 border border-slate-700 data-flow" style="animation-delay: 1s;">
+                                <div class="text-purple-400 text-xl sm:text-2xl font-bold mb-1">24 hrs</div>
+                                <div class="text-slate-400 text-xs sm:text-sm">Typical Response Time</div>
                             </div>
                         </div>
                         
-                        <div class="bg-slate-800/50 rounded-lg p-4 border border-blue-500/30">
-                            <h3 class="text-cyan-400 font-semibold mb-2 flex items-center">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-slate-800/60 rounded-lg p-4 border border-blue-500/30 text-xs sm:text-sm">
+                            <h3 class="text-cyan-300 font-semibold mb-2 flex items-center">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                Why Choose Us?
+                                What you can expect:
                             </h3>
-                            <ul class="space-y-2 text-slate-300 text-sm">
+                            <ul class="space-y-1.5 text-slate-300">
                                 <li class="flex items-start">
-                                    <span class="text-cyan-400 mr-2">•</span>
-                                    <span>Direct connections with leading semiconductor design houses and product companies</span>
+                                    <span class="text-cyan-400 mr-2 mt-0.5">•</span>
+                                    <span>Careful screening of your profile by engineers who understand VLSI flows, not just keywords.</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <span class="text-cyan-400 mr-2">•</span>
-                                    <span>Your profile reviewed by VLSI domain experts, not generic recruiters</span>
+                                    <span class="text-cyan-400 mr-2 mt-0.5">•</span>
+                                    <span>Relevant openings in design services, product companies, and R&D teams.</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <span class="text-cyan-400 mr-2">•</span>
-                                    <span>We reach out only for genuine, relevant opportunities that match your expertise</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-cyan-400 mr-2">•</span>
-                                    <span>Complete confidentiality – your data is never shared without your consent</span>
+                                    <span class="text-cyan-400 mr-2 mt-0.5">•</span>
+                                    <span>Respect for your privacy — your details are never shared without your consent.</span>
                                 </li>
                             </ul>
                         </div>
@@ -278,79 +389,80 @@
             </div>
 
             <!-- Application Form Card -->
-            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden slide-in-right">
-                <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-8 py-6 border-b-4 border-blue-600 relative overflow-hidden">
-                    <div class="shimmer absolute inset-0"></div>
-                    <h2 class="text-3xl font-bold text-white flex items-center relative z-10">
-                        <svg class="w-8 h-8 mr-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 sm:px-8 py-5 sm:py-6 border-b-4 border-blue-600 relative">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 mr-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                         Application Form
                     </h2>
-                    <p class="text-slate-300 mt-2 relative z-10">All fields marked with <span class="text-red-400">*</span> are required</p>
+                    <p class="text-slate-300 mt-1 text-xs sm:text-sm">
+                        All fields marked with <span class="text-red-400">*</span> are required
+                    </p>
                 </div>
                 
-                <div class="p-8 space-y-7">
+                <div class="p-6 sm:p-8 space-y-7">
                     <!-- Personal Information Section -->
-                    <div class="border-l-4 border-blue-600 pl-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="border-l-4 border-blue-600 pl-3 sm:pl-4">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
                             Personal Information
                         </h3>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid md:grid-cols-2 gap-5 sm:gap-6">
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Full Name <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="fullName" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="John Doe">
-                            <p id="fullNameError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="text" id="fullName" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="John Doe">
+                            <p id="fullNameError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Email Address <span class="text-red-500">*</span>
                             </label>
-                            <input type="email" id="email" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="john.doe@example.com">
-                            <p id="emailError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="email" id="email" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="john.doe@example.com">
+                            <p id="emailError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Phone Number <span class="text-red-500">*</span>
                             </label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="+91 98765 43210">
-                            <p id="phoneError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="tel" id="phone" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="+91 98765 43210">
+                            <p id="phoneError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Current Location <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="currentLocation" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="Bangalore, Karnataka">
-                            <p id="currentLocationError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="text" id="currentLocation" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="Bangalore, Karnataka">
+                            <p id="currentLocationError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
                     </div>
 
                     <!-- Professional Details Section -->
-                    <div class="border-l-4 border-cyan-600 pl-4 mt-8">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="border-l-4 border-cyan-600 pl-3 sm:pl-4 mt-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                             Professional Details
                         </h3>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid md:grid-cols-2 gap-5 sm:gap-6">
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Specialization <span class="text-red-500">*</span>
                             </label>
-                            <select id="specialization" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus bg-white">
+                            <select id="specialization" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus bg-white text-sm sm:text-base">
                                 <option value="">Select your specialization</option>
                                 <option value="Verification">Verification (UVM/SystemVerilog)</option>
                                 <option value="DFT (Design for Test)">DFT (Design for Test)</option>
@@ -361,77 +473,79 @@
                                 <option value="ASIC Design">ASIC Design</option>
                                 <option value="FPGA Design">FPGA Design</option>
                             </select>
-                            <p id="specializationError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <p id="specializationError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Years of Experience <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="experience" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="e.g., 3 years or Fresher">
-                            <p id="experienceError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="text" id="experience" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="e.g., 3 years or Fresher">
+                            <p id="experienceError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Current CTC <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="currentCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="e.g., 8 LPA or Fresher">
-                            <p id="currentCtcError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="text" id="currentCtc" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="e.g., 8 LPA or Fresher">
+                            <p id="currentCtcError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Expected CTC <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="expectedCtc" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="e.g., 12 LPA">
-                            <p id="expectedCtcError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="text" id="expectedCtc" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="e.g., 12 LPA">
+                            <p id="expectedCtcError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 font-semibold mb-2">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
                                 Notice Period <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="noticePeriod" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus" placeholder="e.g., Immediate, 30 days, 60 days">
-                            <p id="noticePeriodError" class="text-red-500 text-sm mt-1 hidden"></p>
+                            <input type="text" id="noticePeriod" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="e.g., Immediate, 30 days, 60 days">
+                            <p id="noticePeriodError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
                     </div>
 
                     <!-- Technical Skills Section -->
-                    <div class="border-l-4 border-purple-600 pl-4 mt-8">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="border-l-4 border-purple-600 pl-3 sm:pl-4 mt-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                             </svg>
                             Protocols & Interfaces
                         </h3>
                     </div>
 
-                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                        <p class="text-gray-600 mb-4 text-sm">Select all protocols/interfaces you have experience with:</p>
+                    <div class="bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200">
+                        <p class="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm">Select all protocols/interfaces you have experience with:</p>
                         <div id="protocolButtons" class="mb-4 flex flex-wrap gap-2">
-                            <button type="button" data-protocol="PCIe" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">PCIe</button>
-                            <button type="button" data-protocol="USB" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">USB</button>
-                            <button type="button" data-protocol="AXI" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AXI</button>
-                            <button type="button" data-protocol="AHB" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AHB</button>
-                            <button type="button" data-protocol="APB" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">APB</button>
-                            <button type="button" data-protocol="I2C" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">I2C</button>
-                            <button type="button" data-protocol="SPI" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">SPI</button>
-                            <button type="button" data-protocol="UART" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">UART</button>
-                            <button type="button" data-protocol="CAN" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">CAN</button>
-                            <button type="button" data-protocol="Ethernet" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">Ethernet</button>
-                            <button type="button" data-protocol="DDR" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">DDR</button>
-                            <button type="button" data-protocol="MIPI" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">MIPI</button>
-                            <button type="button" data-protocol="AMBA" class="protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AMBA</button>
+                            <button type="button" data-protocol="PCIe" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">PCIe</button>
+                            <button type="button" data-protocol="USB" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">USB</button>
+                            <button type="button" data-protocol="AXI" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AXI</button>
+                            <button type="button" data-protocol="AHB" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AHB</button>
+                            <button type="button" data-protocol="APB" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">APB</button>
+                            <button type="button" data-protocol="I2C" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">I2C</button>
+                            <button type="button" data-protocol="SPI" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">SPI</button>
+                            <button type="button" data-protocol="UART" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">UART</button>
+                            <button type="button" data-protocol="CAN" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">CAN</button>
+                            <button type="button" data-protocol="Ethernet" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">Ethernet</button>
+                            <button type="button" data-protocol="DDR" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">DDR</button>
+                            <button type="button" data-protocol="MIPI" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">MIPI</button>
+                            <button type="button" data-protocol="AMBA" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AMBA</button>
                         </div>
                         
-                        <div class="flex gap-2 mb-4">
-                            <input type="text" id="customProtocol" class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition" placeholder="Add custom protocol (e.g., NVMe, SerDes)">
-                            <button type="button" id="addProtocolBtn" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition shadow-md">Add</button>
+                        <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                            <input type="text" id="customProtocol" class="flex-1 px-3.5 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition text-sm" placeholder="Add custom protocol (e.g., NVMe, SerDes)">
+                            <button type="button" id="addProtocolBtn" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition shadow-md text-sm">
+                                Add
+                            </button>
                         </div>
 
                         <div id="selectedProtocols" class="bg-blue-50 rounded-lg p-4 border border-blue-200 hidden">
-                            <p class="text-sm text-gray-700 mb-2 font-semibold flex items-center">
+                            <p class="text-xs sm:text-sm text-gray-700 mb-2 font-semibold flex items-center">
                                 <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
@@ -442,9 +556,9 @@
                     </div>
 
                     <!-- Documents Section -->
-                    <div class="border-l-4 border-green-600 pl-4 mt-8">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="border-l-4 border-green-600 pl-3 sm:pl-4 mt-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                             Resume & Project Details
@@ -452,53 +566,50 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">
-                            Upload Resume <span class="text-gray-500 text-sm font-normal">(Optional)</span>
+                        <label class="block text-gray-700 font-semibold mb-1.5">
+                            Upload Resume <span class="text-gray-500 text-xs sm:text-sm font-normal">(Optional)</span>
                         </label>
-                        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer">
-                        <p id="resumeError" class="text-red-500 text-sm mt-1 hidden"></p>
-                        <p id="resumeSuccess" class="text-green-600 text-sm mt-1 hidden flex items-center">
+                        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs sm:file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer text-sm">
+                        <p id="resumeError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        <p id="resumeSuccess" class="text-green-600 text-xs sm:text-sm mt-1 hidden flex items-center">
                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             <span id="resumeSuccessText"></span>
                         </p>
-                        <p class="text-gray-500 text-sm mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+                        <p class="text-gray-500 text-xs sm:text-sm mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">
-                            Project Details & Responsibilities <span class="text-gray-500 text-sm font-normal">(Optional but recommended)</span>
+                        <label class="block text-gray-700 font-semibold mb-1.5">
+                            Project Details & Responsibilities <span class="text-gray-500 text-xs sm:text-sm font-normal">(Optional but recommended)</span>
                         </label>
-                        <textarea id="projectDetails" rows="8" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition resize-y input-focus" placeholder="Please describe:
+                        <textarea id="projectDetails" rows="6" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition resize-y input-focus text-sm" placeholder="Please describe:
 • Projects you've worked on
 • Your role in each project
 • Key responsibilities
 • Technologies/tools used (Synopsys, Cadence, Mentor Graphics, etc.)
-• Achievements or outcomes
-
-Example:
-Project: USB 3.0 Controller Verification
-Role: Verification Engineer
-Responsibilities: Developed UVM testbench, created test plans, achieved 95% code coverage..."></textarea>
-                        <p id="projectDetailsError" class="text-red-500 text-sm mt-1 hidden"></p>
-                        <p class="text-gray-500 text-sm mt-1">
-                            💡 Even if you upload a resume, a brief summary here helps us understand your expertise faster.
+• Achievements or outcomes"></textarea>
+                        <p id="projectDetailsError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        <p class="text-gray-500 text-xs sm:text-sm mt-1">
+                            💡 Even if you upload a resume, a short summary here helps us quickly understand your strengths.
                         </p>
                     </div>
 
-                    <button type="button" id="submitBtn" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-4 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-cyan-600 transition shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden">
-                        <span class="shimmer absolute inset-0"></span>
+                    <button type="button" id="submitBtn" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3.5 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:from-blue-700 hover:to-cyan-600 transition shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden">
                         <span class="relative z-10">Submit Application</span>
                     </button>
                     
-                    <div id="submitError" class="bg-red-50 border-2 border-red-200 rounded-lg p-4 text-red-700 hidden"></div>
+                    <div id="submitError" class="bg-red-50 border-2 border-red-200 rounded-lg p-3 sm:p-4 text-red-700 text-xs sm:text-sm hidden"></div>
                 </div>
             </div>
 
-            <div class="text-center mt-8 text-gray-300">
-                <p class="text-sm">
-                    © 2025 VLSI Career Portal. We respect your privacy – your details are used only for relevant VLSI opportunities.
+            <div class="text-center mt-8 sm:mt-10 text-gray-300 text-xs sm:text-sm px-4">
+                <p class="mb-1">
+                    🔒 We respect your privacy – your details are used only for genuine, relevant VLSI opportunities.
+                </p>
+                <p>
+                    © 2025 VLSI Career Portal.
                 </p>
             </div>
         </div>
@@ -561,9 +672,9 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
             buttons.forEach(btn => {
                 const protocol = btn.getAttribute('data-protocol');
                 if (selectedProtocols.includes(protocol)) {
-                    btn.className = 'protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-2 border-blue-600 shadow-md';
+                    btn.className = 'protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-2 border-blue-600 shadow-md';
                 } else {
-                    btn.className = 'protocol-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400';
+                    btn.className = 'protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400';
                 }
             });
         }
@@ -575,9 +686,9 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
             if (selectedProtocols.length > 0) {
                 container.classList.remove('hidden');
                 list.innerHTML = selectedProtocols.map(p => 
-                    `<span class="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm">
+                    `<span class="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium shadow-sm">
                         ${p}
-                        <button type="button" onclick="removeProtocol('${p}')" class="ml-2 hover:text-red-200 focus:outline-none font-bold text-lg">×</button>
+                        <button type="button" onclick="removeProtocol('${p}')" class="ml-2 hover:text-red-200 focus:outline-none font-bold text-base leading-none">×</button>
                     </span>`
                 ).join('');
             } else {
@@ -786,8 +897,7 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                 }
                 if (successBody) {
                     successBody.textContent =
-                        'Your VLSI profile has been submitted successfully. Our team will carefully review your experience and contact you directly if there is a strong match. ' +
-                        'We never share your details outside relevant VLSI opportunities, so you can trust that your information is in safe hands.';
+                        'Your VLSI profile has been submitted successfully. Our team will carefully review your experience and contact you directly if there is a strong match. We never share your details outside relevant VLSI opportunities, so you can trust that your information is in safe hands.';
                 }
 
                 document.getElementById('mainForm').classList.add('hidden');
@@ -816,6 +926,7 @@ Responsibilities: Developed UVM testbench, created test plans, achieved 95% code
                     
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Submit Application';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 10000);
 
             } catch (error) {
