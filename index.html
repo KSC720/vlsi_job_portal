@@ -473,7 +473,8 @@
                             <label class="block text-gray-700 font-semibold mb-1.5">
                                 Specialization <span class="text-red-500">*</span>
                             </label>
-                            <select id="specialization" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus bg-white text-sm sm:text-base">
+                            <select id="specialization"
+                            class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus bg-white text-sm sm:text-base">
                                 <option value="">Select your specialization</option>
                                 <option value="Verification">Verification (UVM/SystemVerilog)</option>
                                 <option value="DFT (Design for Test)">DFT (Design for Test)</option>
@@ -483,9 +484,56 @@
                                 <option value="Mixed Signal Design">Mixed Signal Design</option>
                                 <option value="ASIC Design">ASIC Design</option>
                                 <option value="FPGA Design">FPGA Design</option>
+                                <option value="Other">Other</option>
                             </select>
                             <p id="specializationError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
+                        <div id="otherSpecializationWrapper" class="mt-3 hidden">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
+                                Please specify <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="otherSpecialization"
+                            class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base"
+                            placeholder="e.g., SerDes Design, Memory Design, EDA Tool Dev">
+                            <p id="otherSpecializationError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-1.5">
+                                Current Position <span class="text-red-500">*</span>
+                            </label>
+
+                            <select id="position"
+                                class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus bg-white text-sm sm:text-base">
+                                <option value="">Select your position</option>
+                                <option value="Intern">Intern</option>
+                                <option value="Graduate Engineer Trainee">Graduate Engineer Trainee</option>
+                                <option value="Junior Engineer">Junior Engineer</option>
+                                <option value="Engineer">Engineer</option>
+                                <option value="Senior Engineer">Senior Engineer</option>
+                                <option value="Lead Engineer">Lead Engineer</option>
+                                <option value="Principal Engineer">Principal Engineer</option>
+                                <option value="Staff Engineer">Staff Engineer</option>
+                                <option value="Architect">Architect</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Director">Director</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                            <p id="positionError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                            </div>
+
+                            <!-- Custom Position -->
+                            <div id="otherPositionWrapper" class="mt-3 hidden">
+                            <label class="block text-gray-700 font-semibold mb-1.5">
+                                Please specify position <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="otherPosition"
+                                class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base"
+                                placeholder="e.g., Senior Staff Verification Engineer">
+                            <p id="otherPositionError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                            </div>
+
+
 
                         <div>
                             <label class="block text-gray-700 font-semibold mb-1.5">
@@ -759,6 +807,36 @@
                 list.innerHTML = '';
             }
         }
+        
+        const specializationSelect = document.getElementById('specialization');
+        const otherSpecWrapper = document.getElementById('otherSpecializationWrapper');
+        const otherSpecInput = document.getElementById('otherSpecialization');
+
+        specializationSelect.addEventListener('change', () => {
+        if (specializationSelect.value === 'Other') {
+            otherSpecWrapper.classList.remove('hidden');
+        } else {
+            otherSpecWrapper.classList.add('hidden');
+            otherSpecInput.value = '';
+            document.getElementById('otherSpecializationError').classList.add('hidden');
+        }
+        });
+
+        const positionSelect = document.getElementById('position');
+        const otherPositionWrapper = document.getElementById('otherPositionWrapper');
+        const otherPositionInput = document.getElementById('otherPosition');
+
+        positionSelect.addEventListener('change', () => {
+        if (positionSelect.value === 'Other') {
+            otherPositionWrapper.classList.remove('hidden');
+        } else {
+            otherPositionWrapper.classList.add('hidden');
+            otherPositionInput.value = '';
+            document.getElementById('otherPositionError').classList.add('hidden');
+        }
+        });
+
+
 
         document.getElementById('resume').addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -810,6 +888,7 @@
             const currentCtc      = document.getElementById('currentCtc').value.trim();
             const expectedCtc     = document.getElementById('expectedCtc').value.trim();
             const noticePeriod    = document.getElementById('noticePeriod').value.trim();
+            const position        = document.getElementById('position').value.trim();
 
             if (!firstName) {
                 document.getElementById('firstNameError').textContent = 'First name is required';
@@ -854,6 +933,31 @@
                 document.getElementById('specializationError').classList.remove('hidden');
                 isValid = false;
             }
+
+            if (specialization === 'Other') {
+                const otherSpec = otherSpecInput.value.trim();
+            if (!otherSpec) {
+                document.getElementById('otherSpecializationError').textContent = 'Please specify your specialization';
+                document.getElementById('otherSpecializationError').classList.remove('hidden');
+                isValid = false;
+                }
+            }
+
+            if (!position) {
+                document.getElementById('positionError').textContent = 'Please select your position';
+                document.getElementById('positionError').classList.remove('hidden');
+                isValid = false;
+                }
+
+                if (position === 'Other') {
+                const otherPosition = otherPositionInput.value.trim();
+                if (!otherPosition) {
+                    document.getElementById('otherPositionError').textContent = 'Please specify your position';
+                    document.getElementById('otherPositionError').classList.remove('hidden');
+                    isValid = false;
+                }
+            }
+
 
             if (!experience) {
                 document.getElementById('experienceError').textContent = 'Years of experience is required';
@@ -1098,7 +1202,14 @@
                     fullName: `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
                     email: document.getElementById('email').value.trim(),
                     phone: document.getElementById('phone').value.trim(),
-                    specialization: document.getElementById('specialization').value || 'Not specified',
+                    specialization:
+                            document.getElementById('specialization').value === 'Other'
+                                ? otherSpecInput.value.trim()
+                                : document.getElementById('specialization').value,
+                    position:
+                        document.getElementById('position').value === 'Other'
+                                ? otherPositionInput.value.trim()
+                                : document.getElementById('position').value,
                     experience: document.getElementById('experience').value.trim() || 'Not specified',
                     currentCtc: document.getElementById('currentCtc').value.trim() || 'Not specified',
                     expectedCtc: document.getElementById('expectedCtc').value.trim() || 'Not specified',
@@ -1153,7 +1264,12 @@
                     document.getElementById('projectDetails').value = '';
                     document.getElementById('resume').value = '';
                     document.getElementById('resumeSuccess').classList.add('hidden');
-                    
+                    otherSpecInput.value = '';
+                    otherSpecWrapper.classList.add('hidden');
+                    document.getElementById('position').value = '';
+                    otherPositionInput.value = '';
+                    otherPositionWrapper.classList.add('hidden');
+
                     selectedProtocols = [];
                     projects = [];
                     updateProtocolButtons();
