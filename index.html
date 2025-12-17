@@ -416,12 +416,23 @@
                     <div class="grid md:grid-cols-2 gap-5 sm:gap-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-1.5">
-                                Full Name <span class="text-red-500">*</span>
+                                First Name <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" id="fullName" class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base" placeholder="John Doe">
-                            <p id="fullNameError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                            <input type="text" id="firstName"
+                                class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base"
+                                placeholder="John">
+                            <p id="firstNameError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
                         </div>
 
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-1.5">
+                                Last Name <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="lastName"
+                                class="w-full px-3.5 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition input-focus text-sm sm:text-base"
+                                placeholder="Doe">
+                            <p id="lastNameError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-1.5">
                                 Email Address <span class="text-red-500">*</span>
@@ -789,7 +800,8 @@
                 el.classList.add('hidden');
             });
 
-            const fullName        = document.getElementById('fullName').value.trim();
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName  = document.getElementById('lastName').value.trim();
             const email           = document.getElementById('email').value.trim();
             const phone           = document.getElementById('phone').value.trim();
             const currentLocation = document.getElementById('currentLocation').value.trim();
@@ -799,9 +811,15 @@
             const expectedCtc     = document.getElementById('expectedCtc').value.trim();
             const noticePeriod    = document.getElementById('noticePeriod').value.trim();
 
-            if (!fullName) {
-                document.getElementById('fullNameError').textContent = 'Full name is required';
-                document.getElementById('fullNameError').classList.remove('hidden');
+            if (!firstName) {
+                document.getElementById('firstNameError').textContent = 'First name is required';
+                document.getElementById('firstNameError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!lastName) {
+                document.getElementById('lastNameError').textContent = 'Last name is required';
+                document.getElementById('lastNameError').classList.remove('hidden');
                 isValid = false;
             }
 
@@ -1075,7 +1093,9 @@
                 }
 
                 const payload = {
-                    fullName: document.getElementById('fullName').value.trim(),
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    fullName: `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
                     email: document.getElementById('email').value.trim(),
                     phone: document.getElementById('phone').value.trim(),
                     specialization: document.getElementById('specialization').value || 'Not specified',
@@ -1120,7 +1140,8 @@
                     document.getElementById('successMessage').classList.add('hidden');
                     document.getElementById('mainForm').classList.remove('hidden');
                     
-                    document.getElementById('fullName').value = '';
+                    document.getElementById('firstName').value = '';
+                    document.getElementById('lastName').value = '';
                     document.getElementById('email').value = '';
                     document.getElementById('phone').value = '';
                     document.getElementById('specialization').value = '';
