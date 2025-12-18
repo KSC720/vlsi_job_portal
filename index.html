@@ -108,7 +108,6 @@
         .protocol-btn {
             transition: all 0.18s ease;
         }
-
         .protocol-btn:hover {
             transform: translateY(-2px);
         }
@@ -458,6 +457,39 @@
                         </div>
                     </div>
 
+                    <div>
+                        <label class="block font-semibold mb-1.5">
+                            Highest Education <span class="text-red-500">*</span>
+                        </label>
+                        <select id="education" class="w-full px-3.5 py-3 border-2 rounded-lg">
+                            <option value="">Select</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="M.Tech">M.Tech</option>
+                            <option value="MS">MS</option>
+                            <option value="PhD">PhD</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <p id="educationError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        </div>
+
+                        <div id="otherEducationWrapper" class="hidden mt-3">
+                        <input id="otherEducation" class="w-full px-3.5 py-3 border-2 rounded-lg"
+                            placeholder="Specify education">
+                            <p id="otherEducationError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        </div>
+
+                        <div>
+                        <label class="block font-semibold mb-1.5">
+                            Year of Passing <span class="text-red-500">*</span>
+                        </label>
+                        <select id="passYear" class="w-full px-3.5 py-3 border-2 rounded-lg">
+                            <option value="">Select year</option>    
+                        </select>
+                        <p id="passYearError" class="text-red-500 text-xs sm:text-sm mt-1 hidden"></p>
+                        </div>
+
+
                     <!-- Professional Details Section -->
                     <div class="border-l-4 border-cyan-600 pl-3 sm:pl-4 mt-6">
                         <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
@@ -614,6 +646,43 @@
                         </div>
                     </div>
 
+                    <!-- Languages Section -->
+                    <div class="border-l-4 border-indigo-600 pl-3 sm:pl-4 mt-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
+                            Languages
+                        </h3>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200">
+                        <p class="text-gray-600 mb-3 text-xs sm:text-sm">
+                            Select languages you are comfortable with:
+                        </p>
+
+                        <div id="languageButtons" class="mb-4 flex flex-wrap gap-2">
+                            <button type="button" data-lang="Verilog" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> Verilog </button>
+                            <button type="button" data-lang="UVM" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> UVM </button>                       
+                            <button type="button" data-lang="System Verilog" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> System Verilog </button>
+                            <button type="button" data-lang="C" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> C </button>
+                            <button type="button" data-lang="Python" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> Python </button>
+                            <button type="button" data-lang="C++" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> C++ </button>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <input id="customLanguage" class="flex-1 px-3 py-2 border-2 rounded-lg text-sm"
+                            placeholder="Add other language">
+                            <button type="button" id="addLanguageBtn"
+                                class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">
+                                Add
+                            </button>
+                        </div>
+
+                        <div id="selectedLanguages" class="mt-4 hidden">
+                            <p class="text-xs font-semibold mb-2">Selected Languages:</p>
+                            <div id="selectedLanguagesList" class="flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+
+
                     <!-- Documents Section -->
                     <div class="border-l-4 border-green-600 pl-3 sm:pl-4 mt-6">
                         <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
@@ -710,7 +779,11 @@
                         <span class="relative z-10">Submit Application</span>
                     </button>
                     
-                    <div id="submitError" class="bg-red-50 border-2 border-red-200 rounded-lg p-3 sm:p-4 text-red-700 text-xs sm:text-sm hidden"></div>
+                    <div id="submitError" class="bg-red-50 border-2 border-red-200 rounded-lg p-3 sm:p-4
+                        text-red-700 text-xs sm:text-sm hidden">
+                        ⚠️ Please fill all mandatory fields marked with * before submitting the form.
+                    </div>
+
                 </div>
             </div>
 
@@ -836,6 +909,120 @@
         }
         });
 
+        let selectedLanguages = [];
+
+        document.getElementById('languageButtons').addEventListener('click', e => {
+        if (e.target.classList.contains('lang-btn')) {
+            const lang = e.target.getAttribute('data-lang');
+            toggleLanguage(lang);
+        }
+        });
+
+        document.getElementById('addLanguageBtn').addEventListener('click', addCustomLanguage);
+
+        document.getElementById('customLanguage').addEventListener('keypress', e => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addCustomLanguage();
+        }
+        });
+
+        function toggleLanguage(lang) {
+        const idx = selectedLanguages.indexOf(lang);
+        if (idx > -1) {
+            selectedLanguages.splice(idx, 1);
+        } else {
+            selectedLanguages.push(lang);
+        }
+        updateLanguageButtons();
+        updateSelectedLanguages();
+        }
+
+        function addCustomLanguage() {
+        const input = document.getElementById('customLanguage');
+        const lang = input.value.trim();
+        if (lang && !selectedLanguages.includes(lang)) {
+            selectedLanguages.push(lang);
+            input.value = '';
+            updateSelectedLanguages();
+            updateLanguageButtons();
+        }
+        }
+
+        function removeLanguage(lang) {
+        const idx = selectedLanguages.indexOf(lang);
+        if (idx > -1) {
+            selectedLanguages.splice(idx, 1);
+            updateLanguageButtons();
+            updateSelectedLanguages();
+        }
+        }
+
+        function updateLanguageButtons() {
+        const buttons = document.querySelectorAll('.lang-btn');
+        buttons.forEach(btn => {
+            const lang = btn.getAttribute('data-lang');
+            if (selectedLanguages.includes(lang)) {
+            btn.className =
+                'lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-2 border-blue-600 shadow-md';
+            } else {
+            btn.className =
+                'lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400';
+            }
+        });
+        }
+
+
+        function updateSelectedLanguages() {
+        const container = document.getElementById('selectedLanguages');
+        const list = document.getElementById('selectedLanguagesList');
+
+        if (selectedLanguages.length > 0) {
+            container.classList.remove('hidden');
+            list.innerHTML = selectedLanguages.map(l => 
+            `<span class="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium shadow-sm">
+                ${l}
+                <button type="button"
+                onclick="removeLanguage('${l}')"
+                class="ml-2 hover:text-red-200 focus:outline-none font-bold text-base leading-none">×</button>
+            </span>`
+            ).join('');
+        } else {
+            container.classList.add('hidden');
+            list.innerHTML = '';
+        }
+        }
+
+        const eduSelect = document.getElementById('education');
+        const otherEdu = document.getElementById('otherEducationWrapper');
+
+        eduSelect.addEventListener('change', () => {
+            otherEdu.classList.toggle('hidden', eduSelect.value !== 'Other');
+
+            // reset education errors on change
+            document.getElementById('educationError').classList.add('hidden');
+            document.getElementById('otherEducationError').classList.add('hidden');
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const yearSelect = document.getElementById('passYear');
+        if (!yearSelect) return;
+
+        const thisYear = new Date().getFullYear();
+
+        // clear existing options except first
+        yearSelect.innerHTML = '<option value="">Select year</option>';
+
+        for (let y = thisYear; y >= 1990; y--) {
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+        }
+        });
+
 
 
         document.getElementById('resume').addEventListener('change', function(e) {
@@ -871,15 +1058,15 @@
             const globalError = document.getElementById('submitError');
             if (globalError) {
                 globalError.classList.add('hidden');
-                globalError.textContent = '';
             }
             
-            document.querySelectorAll('[id$="Error"]').forEach(el => {
-                el.classList.add('hidden');
+            document.querySelectorAll('[id$="Error"]:not(#submitError)').forEach(el => {
+            el.classList.add('hidden');
             });
 
-            const firstName = document.getElementById('firstName').value.trim();
-            const lastName  = document.getElementById('lastName').value.trim();
+
+            const firstName       = document.getElementById('firstName').value.trim();
+            const lastName        = document.getElementById('lastName').value.trim();
             const email           = document.getElementById('email').value.trim();
             const phone           = document.getElementById('phone').value.trim();
             const currentLocation = document.getElementById('currentLocation').value.trim();
@@ -889,6 +1076,10 @@
             const expectedCtc     = document.getElementById('expectedCtc').value.trim();
             const noticePeriod    = document.getElementById('noticePeriod').value.trim();
             const position        = document.getElementById('position').value.trim();
+            const education       = document.getElementById('education').value.trim();
+            const otherEducation  = document.getElementById('otherEducation').value.trim();
+            const yearOfPassing   = document.getElementById('passYear').value.trim();
+
 
             if (!firstName) {
                 document.getElementById('firstNameError').textContent = 'First name is required';
@@ -910,6 +1101,36 @@
                 document.getElementById('emailError').textContent = 'Invalid email format';
                 document.getElementById('emailError').classList.remove('hidden');
                 isValid = false;
+            }
+            // ===== Education Validation =====
+            const eduError = document.getElementById('educationError');
+            const otherEduError = document.getElementById('otherEducationError');
+
+            if (!education) {
+                eduError.textContent = 'Select your highest education to proceed';
+                eduError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                eduError.classList.add('hidden');
+
+            if (education === 'Other' && !otherEducation.trim()) {
+                otherEduError.textContent = 'Mention your education';
+                otherEduError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                otherEduError.classList.add('hidden');
+            }
+            }
+
+            // ===== Year of Passing Validation =====
+            const yearError = document.getElementById('passYearError');
+
+            if (!yearOfPassing) {
+            yearError.textContent = 'Select your year of passing';
+            yearError.classList.remove('hidden');
+            isValid = false;
+            } else {
+            yearError.classList.add('hidden');
             }
 
             if (!phone) {
@@ -992,11 +1213,15 @@
             }
 
             if (!isValid && globalError) {
-                globalError.textContent = '⚠️ Some mandatory details are missing or invalid. Please fill all fields marked with * above and then submit again.';
+                globalError.textContent =
+                    '⚠️ Please fill all mandatory fields marked with * before submitting the form.';
                 globalError.classList.remove('hidden');
-                globalError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
 
+                globalError.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
             return isValid;
         }
 
@@ -1158,6 +1383,7 @@
         }
 
         function escapeHtml(unsafe) {
+            if (!unsafe) return '';
             return unsafe
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
@@ -1166,19 +1392,20 @@
                 .replace(/'/g, "&#039;");
         }
 
+
         // submission logic
         document.getElementById('submitBtn').addEventListener('click', async function() {
             if (!validateForm()) {
+                console.log('Validation failed');
                 return;
             }
+            console.log('Validation passed')
 
             const submitBtn = document.getElementById('submitBtn');
             const errorDiv = document.getElementById('submitError');
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting your application...';
-            errorDiv.classList.add('hidden');
-            errorDiv.textContent = '';
 
             try {
                 const resumeInput = document.getElementById('resume');
@@ -1216,6 +1443,12 @@
                     noticePeriod: document.getElementById('noticePeriod').value.trim() || 'Not specified',
                     currentLocation: document.getElementById('currentLocation').value.trim() || 'Not specified',
                     protocols: selectedProtocols.length > 0 ? selectedProtocols.join(', ') : 'None',
+                    languages: selectedLanguages.join(', '),
+                    education:
+                        document.getElementById('education').value === 'Other'
+                                ? document.getElementById('otherEducation').value.trim()
+                                : document.getElementById('education').value,
+                    yearOfPassing: document.getElementById('passYear').value,
                     projects: projects, // structured projects array
                     projectDetails: document.getElementById('projectDetails').value.trim() || 'Not provided',
                     resumeData: resumeData,
