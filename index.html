@@ -647,9 +647,13 @@
                     </div>
 
                     <!-- Languages Section -->
-                    <div class="border-l-4 border-indigo-600 pl-3 sm:pl-4 mt-6">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
-                            Languages
+                   <div class="border-l-4 border-purple-600 pl-3 sm:pl-4 mt-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            Programming Languages
                         </h3>
                     </div>
 
@@ -659,27 +663,36 @@
                         </p>
 
                         <div id="languageButtons" class="mb-4 flex flex-wrap gap-2">
-                            <button type="button" data-lang="Verilog" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> Verilog </button>
-                            <button type="button" data-lang="UVM" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> UVM </button>                       
-                            <button type="button" data-lang="System Verilog" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> System Verilog </button>
-                            <button type="button" data-lang="C" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> C </button>
-                            <button type="button" data-lang="Python" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> Python </button>
-                            <button type="button" data-lang="C++" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-400"> C++ </button>
+                            <button type="button" data-lang="Verilog" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400"> Verilog </button>
+                            <button type="button" data-lang="UVM" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400"> UVM </button>                       
+                            <button type="button" data-lang="System Verilog" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400"> System Verilog </button>
+                            <button type="button" data-lang="C" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400"> C </button>
+                            <button type="button" data-lang="Python" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400"> Python </button>
+                            <button type="button" data-lang="C++" class="lang-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400"> C++ </button>
                         </div>
 
                         <div class="flex gap-2">
                             <input id="customLanguage" class="flex-1 px-3 py-2 border-2 rounded-lg text-sm"
                             placeholder="Add other language">
                             <button type="button" id="addLanguageBtn"
-                                class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">
+                                class="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition shadow-md text-sm">
                                 Add
                             </button>
+
                         </div>
 
-                        <div id="selectedLanguages" class="mt-4 hidden">
-                            <p class="text-xs font-semibold mb-2">Selected Languages:</p>
-                            <div id="selectedLanguagesList" class="flex flex-wrap gap-2"></div>
+                     <div id="selectedLanguages"
+                            class="bg-blue-50 rounded-lg p-4 border border-blue-200 hidden mt-4">
+                        <p class="text-xs sm:text-sm text-gray-700 mb-2 font-semibold flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Selected Languages:
+                        </p>
+                        <div id="selectedLanguagesList" class="flex flex-wrap gap-2"></div>
                         </div>
+
                     </div>
 
 
@@ -714,6 +727,15 @@
                             Project Details & Responsibilities <span class="text-red-400">*</span>
                         </label>
                         <p class="text-gray-600 text-xs sm:text-sm mb-2">Add one or more projects. At least one project is mandatory.</p>
+                        <div class="bg-amber-50 border border-amber-300 rounded-lg p-4 mb-3 text-amber-900 text-xs sm:text-sm">
+                            <strong>Important:</strong><br>
+                            Please add your project details clearly and in sufficient depth.
+                            This information will be <strong>shared directly with hiring clients</strong> and plays a key role in shortlisting.
+                            <br><br>
+                            <span class="text-amber-700">
+                                Tip: Mention your exact role, tools used, protocols, and your contribution.
+                            </span>
+                        </div>
 
                         <div id="projectsContainer" class="space-y-3 mb-3">
                             <!-- dynamically added project cards will appear here -->
@@ -778,7 +800,10 @@
                     <button type="button" id="submitBtn" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3.5 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:from-blue-700 hover:to-cyan-600 transition shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden">
                         <span class="relative z-10">Submit Application</span>
                     </button>
-                    
+                    <p id="submitStatus"
+                        class="mt-3 text-center text-xs sm:text-sm text-blue-600 hidden">
+                    </p>
+
                     <div id="submitError" class="bg-red-50 border-2 border-red-200 rounded-lg p-3 sm:p-4
                         text-red-700 text-xs sm:text-sm hidden">
                         ⚠️ Please fill all mandatory fields marked with * before submitting the form.
@@ -800,6 +825,11 @@
 
     <script>
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxjxEhPGHGlsDxL-m3JeMTjERBCgStjt74ed-imkMhVYT4-lQKG_QT78Ixkfjpvmb8/exec';
+
+        function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
 
         let selectedProtocols = [];
         let projects = []; // store project objects
@@ -1402,10 +1432,26 @@
             console.log('Validation passed')
 
             const submitBtn = document.getElementById('submitBtn');
+            // ✅ PREVENT DOUBLE CLICK
+            if (submitBtn.disabled) return;
             const errorDiv = document.getElementById('submitError');
-            
+
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting your application...';
+            submitBtn.innerHTML = `
+            <span class="animate-pulse">Submitting… Please wait</span>
+            `;
+
+
+            const statusEl = document.getElementById('submitStatus');
+            statusEl.classList.remove('hidden');
+
+            // STEP 1 — validation feedback
+            statusEl.textContent = '🔍 Validating your profile…';
+            await delay(600);
+
+            // STEP 2 — preparation
+            statusEl.textContent = '📦 Preparing project & resume data…';
+            await delay(600);
 
             try {
                 const resumeInput = document.getElementById('resume');
@@ -1416,11 +1462,12 @@
                 let resumeMimeType = '';
 
                 if (file) {
-                    console.log('Processing file:', file.name, 'Size:', file.size, 'Type:', file.type);
+                    statusEl.textContent = '📄 Uploading resume & project data…';
+                    await delay(800);
+
                     resumeData = await fileToBase64(file);
                     resumeFileName = file.name;
                     resumeMimeType = file.type || 'application/pdf';
-                    console.log('File converted to base64, length:', resumeData.length);
                 }
 
                 const payload = {
@@ -1457,7 +1504,9 @@
                 };
 
                 console.log('Sending payload:', { ...payload, resumeData: resumeData ? `[${resumeData.length} chars]` : 'none' });
-
+                
+                statusEl.textContent = '🧠 Generating professional VLSI profile…';
+                await delay(700);
                 await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -1466,6 +1515,10 @@
                     },
                     body: JSON.stringify(payload)
                 });
+                statusEl.textContent = '📨 Notifying hiring team…';
+                await delay(700);
+                statusEl.textContent = '✅ Submission successful! Finalizing…';
+                await delay(800);
 
                 const successTitle = document.getElementById('successTitle');
                 const successBody = document.getElementById('successBody');
@@ -1476,7 +1529,7 @@
                     successBody.textContent =
                         'Your VLSI profile has been submitted successfully. Our team will carefully review your experience and contact you directly if there is a strong match. We never share your details outside relevant VLSI opportunities, so you can trust that your information is in safe hands.';
                 }
-
+                statusEl.textContent = '✅ Finalizing submission. Almost done...';
                 document.getElementById('mainForm').classList.add('hidden');
                 document.getElementById('successMessage').classList.remove('hidden');
 
@@ -1497,6 +1550,8 @@
                     document.getElementById('projectDetails').value = '';
                     document.getElementById('resume').value = '';
                     document.getElementById('resumeSuccess').classList.add('hidden');
+                    statusEl.classList.add('hidden');
+                    statusEl.textContent = '';
                     otherSpecInput.value = '';
                     otherSpecWrapper.classList.add('hidden');
                     document.getElementById('position').value = '';
