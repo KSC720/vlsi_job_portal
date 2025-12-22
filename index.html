@@ -628,12 +628,20 @@
                             <button type="button" data-protocol="AMBA" class="protocol-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400">AMBA</button>
                         </div>
                         
-                        <div class="flex flex-col sm:flex-row gap-2 mb-4">
-                            <input type="text" id="customProtocol" class="flex-1 px-3.5 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition text-sm" placeholder="Add custom protocol (e.g., NVMe, SerDes)">
-                            <button type="button" id="addProtocolBtn" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition shadow-md text-sm">
+                        
+                        <div class="flex gap-2 mb-4">
+                            <input type="text" id="customProtocol"
+                                class="flex-1 px-3 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition text-sm"
+                                placeholder="Add custom protocol (e.g., NVMe, SerDes)"
+                            />
+                            <button
+                                type="button"
+                                id="addProtocolBtn"
+                                class="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition shadow-md text-sm">
                                 Add
                             </button>
-                        </div>
+                            </div>
+
 
                         <div id="selectedProtocols" class="bg-blue-50 rounded-lg p-4 border border-blue-200 hidden">
                             <p class="text-xs sm:text-sm text-gray-700 mb-2 font-semibold flex items-center">
@@ -828,6 +836,11 @@
 
         function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function showStatus(statusEl, message, delayMs = 900) {
+        statusEl.textContent = message;
+        await delay(delayMs);
         }
 
 
@@ -1445,13 +1458,8 @@
             const statusEl = document.getElementById('submitStatus');
             statusEl.classList.remove('hidden');
 
-            // STEP 1 — validation feedback
-            statusEl.textContent = '🔍 Validating your profile…';
-            await delay(600);
-
-            // STEP 2 — preparation
-            statusEl.textContent = '📦 Preparing project & resume data…';
-            await delay(600);
+            await showStatus(statusEl, '🔍 Validating your profile…');
+            await showStatus(statusEl, '📦 Preparing project & resume data…');
 
             try {
                 const resumeInput = document.getElementById('resume');
@@ -1462,8 +1470,7 @@
                 let resumeMimeType = '';
 
                 if (file) {
-                    statusEl.textContent = '📄 Uploading resume & project data…';
-                    await delay(800);
+                   await showStatus(statusEl, '📄 Uploading resume & project data…');
 
                     resumeData = await fileToBase64(file);
                     resumeFileName = file.name;
@@ -1505,8 +1512,8 @@
 
                 console.log('Sending payload:', { ...payload, resumeData: resumeData ? `[${resumeData.length} chars]` : 'none' });
                 
-                statusEl.textContent = '🧠 Generating professional VLSI profile…';
-                await delay(700);
+                await showStatus(statusEl, '🧠 Generating professional VLSI profile…');
+
                 await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -1515,10 +1522,8 @@
                     },
                     body: JSON.stringify(payload)
                 });
-                statusEl.textContent = '📨 Notifying hiring team…';
-                await delay(700);
-                statusEl.textContent = '✅ Submission successful! Finalizing…';
-                await delay(800);
+                await showStatus(statusEl, '📨 Notifying hiring team…');
+                await showStatus(statusEl, '✅ Submission successful! Finalizing…', 1200);
 
                 const successTitle = document.getElementById('successTitle');
                 const successBody = document.getElementById('successBody');
